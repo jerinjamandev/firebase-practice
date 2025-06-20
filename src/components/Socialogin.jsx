@@ -1,12 +1,14 @@
 import React from 'react';
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
+const navigate=useNavigate()
 const provider= new  GoogleAuthProvider();
 const handler=()=>{
     signInWithPopup(auth,provider)
-    .then(res=>{console.log(res.user);})
+    .then(res=>{console.log(res.user),navigate('/');})
     .catch(error=>{console.log(error.message);})
 }
     return (
