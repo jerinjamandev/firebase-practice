@@ -12,6 +12,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Authprovider, { Authcontext } from './provider/Authprovider';
+import Private from './private/Private';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About></About>
+        element: <Private>
+          <About></About>
+          </Private>
       },
       {
         path: '/login',

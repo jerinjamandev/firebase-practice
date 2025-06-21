@@ -9,10 +9,12 @@ export const Authcontext=createContext();
 
 const Authprovider = ({children}) => {
      const [user,setuser]=useState(null);
+     const [loading,setloading]=useState(true)
         useEffect(()=>{
         const unsubscribe=onAuthStateChanged(auth,currentuser=>{
             console.log(currentuser);
             setuser(currentuser)
+            setloading(false)
         })
          return()=>unsubscribe();
     },[])
@@ -20,7 +22,7 @@ const Authprovider = ({children}) => {
     const logout=()=>{
         return signOut(auth)
     }
-    const authinfo={user,logout}
+    const authinfo={user,logout,loading}
 
     
 
